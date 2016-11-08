@@ -88,6 +88,6 @@ H:\Projects\login\login\bin\Microsoft.Owin.Security.Google.xml
 H:\Projects\login\login\bin\Microsoft.Owin.Security.Twitter.xml
 H:\Projects\login\login\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 H:\Projects\login\login\bin\System.Web.Http.Owin.xml
-H:\Projects\login\login\obj\Debug\login.csprojResolveAssemblyReference.cache
 H:\Projects\login\login\obj\Debug\login.dll
 H:\Projects\login\login\obj\Debug\login.pdb
+H:\Projects\login\login\obj\Debug\login.csprojResolveAssemblyReference.cache

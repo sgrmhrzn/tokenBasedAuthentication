@@ -1,5 +1,5 @@
 ﻿"use strict";
 
 (function () {
-    var app = angular.module("myApp", ["common.services"])
+    var app = angular.module("myApp", ["common.services","ngCookies"])
 })();

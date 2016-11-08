@@ -4,28 +4,36 @@
     angular
     .module("common.services")
         .factory("currentUser",
-                    currentUser)
+                ["$cookies", currentUser])
 
-    function currentUser(){
-        var profile = {
-        isLoggedIn:false,
-        username:"",
-        token: ""
+    function currentUser($cookies){
+        var profile;
+        
+        var removeProfile = function(){
+            profile = {
+                isLoggedIn: false,
+                username: "",
+                token: ""
+            }
         };
 
-        var setProfile = function(username, token){
-            profile.username = username;
-            profile.token = token;
-            profile.isLoggedIn = true;
+        var setProfile = function (username, token) {
+             profile = {
+                username: username,
+                token: token,
+                isLoggedIn: true
+            }
+            $cookies.putObject('profileCookies', profile)
         };
         var getProfile = function(){
-            return profile;
+            return $cookies.getObject('profileCookies');
         }
 
         return{
-            setProfile:setProfile,
-            getProfile:getProfile
+            setProfile: setProfile,
+            getProfile: getProfile,
+            removeProfile: removeProfile
         }
         
     }
-})();
+}());

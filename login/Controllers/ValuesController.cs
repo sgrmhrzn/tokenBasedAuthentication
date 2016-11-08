@@ -5,17 +5,21 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.Description;
 
 namespace login.Controllers
 {
-    [Authorize]
+    
     [EnableCorsAttribute("http://localhost:56594", "*", "*")]
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        [Authorize()]
+        public string Get()
         {
-            return new string[] { "value1", "value2" };
+            var obj = new object();
+
+            return "Sample";
         }
 
         // GET api/values/5

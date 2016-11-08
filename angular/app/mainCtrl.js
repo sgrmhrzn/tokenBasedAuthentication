@@ -3,15 +3,22 @@
 
     angular
     .module("myApp")
-    .controller("MainCtrl", ["userAccount","currentUser",
+    .controller("MainCtrl", ["userAccount","currentUser","$cookies",
                                        MainCtrl]);
 
-    function MainCtrl(userAccount, currentUser) {
+    function MainCtrl(userAccount, currentUser,$cookies) {
         var vm = this;
         vm.isLoggedIn = function () {
             return currentUser.getProfile().isLoggedIn;
         };
+
+        vm.logout = function () {
+            $cookies.remove("profileCookies");
+            return currentUser.removeProfile();
+        };
+
         vm.message = '';
+
         vm.userData = {
             userName: '',
             email: '',
@@ -51,6 +58,8 @@
                 function (data) {
                     vm.message = "";
                     vm.password = "";
+                    currentUser.setProfile(vm.userData.userName, data.access_token);
+                    console.log($cookies.getObject('profileCookies'));
                 },
                 function (response) {
                     vm.password = "";
@@ -64,10 +73,7 @@
                 });
         }
 
-        //function values() {
-        //    vm.values = get
-        //    values.get.getValues
-        //}
+        
 
     }
 })();
